@@ -1,0 +1,37 @@
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+h1 {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color:white;
+    width:325px;
+    margin: auto;
+}
+nav {
+    border: 5px solid black;
+    border-radius: 15px;
+    width: 25%;
+    background-color: #333;
+}
+ul {
+    color:white;
+    font-size: 1.5em;
+}
+a {
+    text-decoration: none;
+    color: white;
+    font-size: 1em;
+    padding: 2px;
+}
+a:hover{
+    background-color: #b3b3b3;
+    color: #333;
+}
+
+@media screen and (max-width: 700px) {
+    nav {
+        width: 85%;
+    }
+}

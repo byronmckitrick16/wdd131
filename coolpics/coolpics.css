@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Mooli&display=swap");
+:root {
+ --primary-color: #52489c;
+ --secondary-color: #59c3c3;
+ --accent-color: #ffffff;
+ --text-dark: #333;
+ --text-light: #ebebeb;
+ --primary-font: Arial, Helvetica,sans-serif;
+ --secondary-font: 'Mooli', sans-serif;
+}
+
+a:link, a:visited {
+    color: var(--accent-color);
+}
+
+.viewer {
+    position: fixed;
+    display: grid;
+    grid-template-rows: .25fr 1fr;
+    background-color: rgba(0, 0, 0, 0.75);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.close-viewer {
+    grid-row: 1/2;
+    justify-self: end;
+    padding-right: 20px;
+}
+
+.viewer img {
+    width: 95%;
+    max-height: 100%;
+    grid-row: 2/4;
+    justify-self: center;
+}
+
+body {
+    font-family: var(--primary-font);
+    font-size: 1.2em;
+    margin: 0;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+    width:100%;
+    margin: 0;
+}
+
+h1 {
+    margin: 0;
+    font-size: 5rem;
+    font-family: var(--secondary-font);
+    text-align: center;
+}
+
+nav {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 2%;
+}
+.hide {
+    display: none;
+}
+
+button {
+    border: none;
+    background: none;
+    color: var(--accent-color);
+    font-size: 1.5rem;
+}
+
+nav a {
+    text-align: center;
+    padding-bottom: 1%;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+figure img {
+    max-width: 100%;
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
+    border: 15px solid white;
+    box-shadow: 5px 5px 8px black;   
+}
+footer {
+    background-color: var(--primary-color);
+    color: var(--accent-color);
+}
+footer p {
+    margin: 0;
+    padding: 10px;
+}
+
+@media screen and (min-width: 700px) {
+    .gallery {
+        grid-template-columns: 1fr 1fr;
+    }
+    .viewer img {
+        width: 75%;
+    }
+}
+@media screen and (min-width: 1000px) {
+    .viewer {
+        margin: 30px;
+        grid-template-rows: 15% 85%;
+    }
+
+    .viewer img {
+        width: 600px;
+    }
+
+    .close-viewer {
+        padding-right: 50px;
+        padding-top: 15px;
+    }
+    
+    .menuButton {
+        display: none;
+    }
+
+    nav {
+        grid-template-columns: repeat(5, 1fr);
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+
+    .hide {
+        display:block;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+        padding-left: 10rem;
+        padding-right: 10rem;
+    }
+
+    footer p {
+        padding-left: 6rem;
+    }
+}

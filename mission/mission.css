@@ -1,0 +1,58 @@
+body{
+    font-family: 'Times New Roman', Times, serif;
+    border:1px solid #cfcfcf;
+    max-width: 600px;
+    margin:30px auto;
+    font-size: 20px;
+    padding: 50px;
+    line-height: 1.5;
+}
+
+.dark{
+    background-color: #333;
+    color: white;
+}
+
+.dark h2{
+    color: #4F9ACF;
+}
+
+.dark #theme{
+    background-color: #333;
+    color: white;
+}
+
+.content{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+h1{
+    margin: auto;
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+h2{
+    margin: auto;
+    margin-bottom: 50px;
+    text-align: center;
+    color: #006eb6;
+    font-size: 1em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+li{
+    padding-bottom: 20px; 
+}
+
+.logo{
+    display:block;
+    margin: auto;
+    width: 150px;
+    padding: 30px;
+}
