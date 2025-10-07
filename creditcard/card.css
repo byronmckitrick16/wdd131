@@ -1,0 +1,102 @@
+main {
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    grid-template-rows: 10% 60% 10% 10%;
+}
+
+#frontcardform {
+    background-color: #dddddd;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px;
+    width: 65%;
+    display: grid;
+    grid-template-columns: 1fr .5fr;
+    height: 250px;
+    grid-column: 1/3;
+    grid-row: 1/3;
+}
+
+.total {
+    margin-left: 5%;
+    margin-top: 10%;
+}
+
+.cardImage {
+    height: 55px;
+    justify-self: end;
+    margin-right: 15%;
+    margin-top: 5%;
+}
+
+.cardNumberElement {
+    grid-column: 1/3;
+}
+
+.cardNumberElement label {
+    margin-left: 3%;
+}
+
+#cardNumber {
+    width: 90%;
+    margin-left: 3%;
+    height: 30px;
+}
+
+.cardHolderElement {
+    margin-left: 5%;
+}
+
+#cardHolder {
+    width: 90%;
+    height: 30px;
+}
+
+#expirationMonth {
+    height: 30px;
+    width: 30%;
+    margin-right: 10%;
+}
+
+#expirationYear {
+    height: 30px;
+    width: 30%;
+}
+
+#backcardform {
+    background-color: #dddddd;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px;
+    width: 65%;
+    height: 200px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    display: grid;
+    grid-template-columns: 75% 25%;
+    grid-template-rows: 1fr 1fr;
+    grid-column: 2/4;
+    grid-row: 2/4;
+}
+
+#backcardform div {
+    background-color: #272727;
+    grid-column: 1/3;
+    height: 50%;
+    width: 100%;
+}
+
+.cvcElement {
+    grid-column: 2/3;
+    align-self: end;
+}
+
+#cvc {
+    width: 60%;
+    height: 30px;
+}
+
+.submitButton {
+    justify-self: end;
+    grid-column: 2/3;
+    width: 100px;
+    border-radius: 8px;
+}
