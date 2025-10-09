@@ -1,14 +1,16 @@
-main {
+#creditCardForm {
     display: grid;
-    grid-template-columns: 15% 70% 15%;
-    grid-template-rows: 10% 60% 10% 10%;
+    grid-template-columns: 22% 58% 22%;
+    grid-template-rows: 13% 50% 15% 10%;
+    width: 500px;
+    margin: 20px;
 }
 
 #frontcardform {
     background-color: #dddddd;
     border-radius: 5px;
     box-shadow: 1px 1px 10px;
-    width: 65%;
+    width: 400px;
     display: grid;
     grid-template-columns: 1fr .5fr;
     height: 250px;
@@ -66,7 +68,7 @@ main {
     background-color: #dddddd;
     border-radius: 5px;
     box-shadow: 1px 1px 10px;
-    width: 65%;
+    width: 400px;
     height: 200px;
     padding-top: 25px;
     padding-bottom: 25px;
@@ -96,7 +98,8 @@ main {
 
 .submitButton {
     justify-self: end;
-    grid-column: 2/3;
+    grid-column: 3/4;
+    grid-row: 4/5;
     width: 100px;
     border-radius: 8px;
 }
