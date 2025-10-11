@@ -4,20 +4,24 @@ function isCardNumberValid(number) {
 }
 function displayError(msg) {
 	// display error message
-	document.querySelector('.errorMsg').innerHTML = msg
+	document.querySelector("#errorMsg").innerHTML = msg
 }
 function submitHandler(event) {
 	event.preventDefault()
-	let errorMsg = ''
-    console.log(this)
-	console.log(this.cardNumber.value)
+	checkError();
+	checkDate();
+}
+
+function checkError() {
+	let errorMsg = " "
+	const cardNumber = document.querySelector("#cardNumber")
 	// clear any previous errors
-	displayError('')
+	displayError(" ")
 	// check credit card number
-	if (isNaN(this.cardNumber.value)) {
+	if (isNaN(cardNumber.value)) {
 		// it is not a valid number
 		errorMsg += 'Card number is not a valid number\n'
-	} else if (!isCardNumberValid(this.cardNumber.value)) {
+	} else if (!isCardNumberValid(cardNumber.value)) {
 		// it is a number, but is it valid?
 		errorMsg += 'Card number is not a valid card number\n'
 	}
@@ -25,7 +29,29 @@ function submitHandler(event) {
 		// there was an error. stop the form and display the errors.
 		displayError(errorMsg)
 		return false
+	};
+	return true
+};
+
+function checkDate() {
+	let errorMsg = ""
+	const currentDate = new Date();
+	const month = currentDate.getMonth();
+	const realMonth = month + 1
+	const year = currentDate.getFullYear();
+
+	const monthEl = document.querySelector("#expirationMonth");
+	const yearEl = document.querySelector("#expirationYear");
+
+	if (year > yearEl.value) {
+		errorMsg += "Expiration date is not a vaid date"
+	} else if (year == yearEl.value && realMonth > monthEl.value) {
+		errorMsg += "Expiration date is not a vaid date"
 	}
+	if (errorMsg !== "") {
+		displayError(errorMsg)
+		return false
+	};
 	return true
 }
 
