@@ -30,6 +30,10 @@
 
 /*  Look around below...but DON'T CHANGE ANYTHING! */
 
+.wireframe {
+  width: 700px;
+}
+
 .logo {
   width: 300px;
 }
