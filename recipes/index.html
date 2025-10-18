@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Byron Mcktirick">
     <meta name="description" content="A website to make it easy for others to find some good recipes.">
+    <meta property="og:title" content="Recipe Book">
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="A website to make it easy for others to find some good recipes.">
+    <meta property="og:image" content="https://byronmckitrick16.github.io/wdd131/recipes/images/chocolate-chip-cookies.jpg">
+    <meta property="og:url" content="https://byronmckitrick16.github.io/wdd131/recipes/index.html">
+    <meta name="twitter:card" content="summary_large_image">
     <title>Recipe Book</title>
     <link rel="stylesheet" href="recipes.css">
     <script src="recipes.js" defer></script>
@@ -15,30 +21,37 @@
             <img class="logo" src="images/recipe-book.png" alt="recipe book logo">
             <h1>RecipeBook</h1>
         </div>
+        <form class="searchBar" action="#">
         <label for="searchBar" class="hidden"></label>
         <input type="text" id="searchBar" name="searchBar" placeholder="Find a recipe">
+        <button class="searchButton"><img src="images/search.svg" alt=""></button>
+        </form>
     </header>
     <main>
-        <div class="recipe">
-            <img src="./images/sweet-potato-waffle-md.jpg" alt="image of sweet potato waffles">
-            <div class="tags">
-                <h2>Waffles</h2>
-                <h2>Sweet Potato</h2>
-                <h2>Side</h2>
+        <section class="container">
+            <div class="recipe">
+                <img src="./images/sweet-potato-waffle-md.jpg" alt="image of sweet potato waffles">
+                <section>
+                    <div class="tags">
+                        <p>Waffles</p>
+                        <p>Sweet Potato</p>
+                        <p>Side</p>
+                    </div>
+                    <h2>Sweet Potato Waffles</h2>
+                    <span class="rating" role="img" aria-label="Rating: 4 out of 5 stars">
+                        <span aria-hidden="true" class="icon-star">⭐</span>
+                        <span aria-hidden="true" class="icon-star">⭐</span>
+                        <span aria-hidden="true" class="icon-star">⭐</span>
+                        <span aria-hidden="true" class="icon-star-empty">⭐</span>
+                        <span aria-hidden="true" class="icon-star-empty">☆</span>
+                    </span>
+                    <p class="description">Savory waffles made with Sweet potato with a hint of Ginger</p>
+                </section>
             </div>
-            <h2>Sweet Potato Waffles</h2>
-            <span class="rating" role="img" aria-label="Rating: 4 out of 5 stars">
-                <span aria-hidden="true" class="icon-star">⭐</span>
-                <span aria-hidden="true" class="icon-star">⭐</span>
-                <span aria-hidden="true" class="icon-star">⭐</span>
-                <span aria-hidden="true" class="icon-star-empty">⭐</span>
-                <span aria-hidden="true" class="icon-star-empty">☆</span>
-            </span>
-            <p>Savory waffles made with Sweet potato with a hint of Ginger</p>
-        </div>
+        </section>
     </main>
     <footer>
-        <a href="https://www.flaticon.com/free-icons/recipe" title="recipe icons">Recipe icons created by Freepik - Flaticon</a>
+        <a class="flaticon" href="https://www.flaticon.com/free-icons/recipe" title="recipe icons">Recipe icons created by Freepik - Flaticon</a>
         <div class="social">
             <!-- Social media icons provided under CC from https://www.iconfinder.com/AlfredoCreates  -->
             <a href="#"><img src="images/instagram_icon.svg" alt="instagram icon"></a>

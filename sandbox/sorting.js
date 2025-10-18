@@ -94,8 +94,8 @@ function searchList(list, q) {
     function searchCallback(object) {
         return object.name.toLowerCase().includes(q.toLowerCase()) ||
         object.description.toLowerCase().includes(q.toLowerCase()) ||
-        object.tags.find((string) => 
-            string.toLowerCase().includes(q.toLowerCase));
+        object.tags.find((string) =>
+            string.toLowerCase().includes(q.toLowerCase))
     }
     const filteredList = list.filter(searchCallback);
     return filteredList
