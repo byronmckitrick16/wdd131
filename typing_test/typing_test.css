@@ -20,7 +20,7 @@ header {
     justify-content: space-between;
     background-color: var(--accent1-color);
     padding: 15px;
-    border-bottom: 2px solid var(--primary-color);
+    border-bottom: 3px solid var(--primary-color);
 }
 
 .logo {
@@ -41,6 +41,7 @@ nav a {
     text-decoration: none;
     font-size: 1.5rem;
     color: var(--primary-color);
+    border-radius: 10%;
 }
 
 nav a:hover {
@@ -57,19 +58,50 @@ nav a:hover {
 .instruction {
     font-size: 1.3rem;
     font-family: var(--heading-font);
+    margin-bottom: 5px;
+    color: var(--primary-color);
 }
 
 .typingText {
     font-size: 1.5rem;
-    width: 95%;
+    width: 85%;
     border: 3px solid var(--primary-color);
     background-color: var(--accent3-color);
     padding: 10px;
 }
 
 #textInput {
-    width: 95%;
+    width: 85%;
     height: 150px;
     background-color: var(--accent3-color);
     font-size: 1.5rem;
+    padding: 10px;
+}
+
+footer {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 25px;
+    align-items: center;
+}
+
+.timer {
+    font-size: 2.5rem;
+}
+
+.restart {
+    height: 40px;
+    width: 85px;
+    background-color: var(--accent1-color);
+    color: var(--primary-color);
+}
+
+@media screen and (max-width: 600px) {
+    header {
+        justify-content: center;
+    }
+
+    .logo {
+        display: none;
+    }
 }
