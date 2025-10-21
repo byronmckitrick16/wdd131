@@ -1,8 +1,9 @@
-// quick reminder for myself later
+// quick reminders for myself later
 // localStorage.setItem("nameforkey", variable)
 // localStorage.getItem("nameofkey")
 // localStorage.setItem("name", JSON.stringify(object));
 // JSON.parse(localStorage.getItem(stringToTurnToObject));
+// set interval for the timer
 
 const typingText = [
     {
@@ -22,6 +23,9 @@ const typingText = [
         text: "The curious cat leapt gracefully onto the windowsill, watching raindrops slide down the glass in tiny streams, fascinated by their unpredictable paths, while the quiet hum of the refrigerator filled the kitchen and the faint scent of coffee lingered from a cup left half-finished on the counter nearby."
     }
 ]
+
+let timer = null;
+let time = 60;
 
 function getRandomnumber() {
     return Math.floor(Math.random() * typingText.length)
@@ -61,11 +65,32 @@ function compareTypingInput(inputList) {
 }
 
 function startTimer() {
-    
+    timer ??= setInterval(returnTime, 1000)
+}
+
+function returnTime() {
+    if (time != 0) {
+        time = time - 1
+        const timerEl = document.querySelector(".timer")
+        timerEl.innerHTML = `${time} sec`
+        return time
+    } else {
+        clearInterval(timer);
+        stopTest();
+    };
+}
+
+function stopTest() {
+    const stopEl = document.querySelector(".stopTest")
+    stopEl.classList.remove("hide")
 }
 
 function calculateWpm() {
 
+}
+
+function reset() {
+    
 }
 
 function setLocalStorage() {
@@ -78,4 +103,9 @@ function getLocalStorage() {
 
 displayText();
 
-document.querySelector("#textInput").addEventListener("input", getTypingInput)
+const textInputEl = document.querySelector("#textInput")
+textInputEl.addEventListener("input", getTypingInput)
+textInputEl.addEventListener("input", startTimer)
+
+// const button = document.querySelector(".restart")
+// button.addEventListener("click", startTimer)
