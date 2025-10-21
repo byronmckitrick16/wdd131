@@ -64,14 +64,14 @@ nav a:hover {
 
 .typingText {
     font-size: 1.5rem;
-    width: 85%;
+    width: 80%;
     border: 3px solid var(--primary-color);
     background-color: var(--accent3-color);
     padding: 10px;
 }
 
 #textInput {
-    width: 85%;
+    width: 80%;
     height: 150px;
     background-color: var(--accent3-color);
     font-size: 1.5rem;
@@ -94,6 +94,70 @@ footer {
     width: 85px;
     background-color: var(--accent1-color);
     color: var(--primary-color);
+}
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
+}
+
+/* 2nd page styles */
+.personalBest {
+    margin: 0 auto;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    border: 5px solid var(--primary-color);
+    width: 300px;
+    background-color: var(--accent1-color);
+}
+
+.personalBest h2, .averageWpm h2 {
+    margin: 10px;
+    margin-right: 0;
+}
+
+.contentPage2 {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.averageWpm {
+    display: flex;
+    border: 5px solid var(--primary-color);
+    background-color: var(--accent1-color);
+}
+
+.tableDiv {
+    width: 60%;
+}
+
+table {
+  background-color: #EFF6E0;
+  width: 100%;
+  text-align: left;
+}
+table td, table th {
+  padding: 3px 2px;
+}
+table tbody td {
+  font-size: 13px;
+}
+table thead {
+  background: #698392;
+  border-bottom: 2px solid #01161E;
+}
+table thead th {
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+}
+table tfoot td {
+  font-size: 14px;
 }
 
 @media screen and (max-width: 600px) {
