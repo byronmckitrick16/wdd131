@@ -64,7 +64,7 @@ nav a:hover {
 
 .typingText {
     font-size: 1.5rem;
-    width: 80%;
+    width: 78%;
     border: 3px solid var(--primary-color);
     background-color: var(--accent3-color);
     padding: 10px;

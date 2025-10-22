@@ -3,7 +3,6 @@
 // localStorage.getItem("nameofkey")
 // localStorage.setItem("name", JSON.stringify(object));
 // JSON.parse(localStorage.getItem(stringToTurnToObject));
-// set interval for the timer
 
 const typingText = [
     {
@@ -26,13 +25,14 @@ const typingText = [
 
 let timer = null;
 let time = 60;
+let randomNum;
 
 function getRandomnumber() {
     return Math.floor(Math.random() * typingText.length)
 }
 
 function displayText() {
-    const randomNum = getRandomnumber();
+    randomNum = getRandomnumber();
     const textEl = document.querySelector(".typingText");
 
     textEl.innerHTML = typingText[randomNum].text.split("").map(splitText).join("")
@@ -52,6 +52,7 @@ function compareTypingInput(inputList) {
     const spans = document.querySelectorAll(".text")
     spans.forEach((span, index) => {
         const typedCharacter = inputList[index]
+
         if (typedCharacter == undefined) {
             span.classList.remove("correct", "incorrect")
         } else if (typedCharacter == span.textContent) {
@@ -61,6 +62,10 @@ function compareTypingInput(inputList) {
             span.classList.add("incorrect")
             span.classList.remove("correct")
         }
+
+        if (inputList.length >= spans.length) {
+            stopTest();
+        }
     });
 }
 
@@ -69,32 +74,73 @@ function startTimer() {
 }
 
 function returnTime() {
-    if (time != 0) {
+    if (time > 50) {
         time = time - 1
         const timerEl = document.querySelector(".timer")
         timerEl.innerHTML = `${time} sec`
         return time
-    } else {
-        clearInterval(timer);
+    } 
+    else {
         stopTest();
     };
 }
 
 function stopTest() {
+    clearInterval(timer);
+
+    const wpm = calculateWpm();
+
     const stopEl = document.querySelector(".stopTest")
     stopEl.classList.remove("hide")
+    stopEl.innerHTML = `You got a ${Math.round(wpm)} WPM`
+
+    const inputEl = document.querySelector("#textInput")
+    inputEl.disabled = true
+
+    setLocalStorage(wpm);
 }
 
 function calculateWpm() {
+    const wordsTyped = textInput.value.split(" ")
+    const numberwords = wordsTyped.length
 
+    if (time != 0) {
+        const elapsedTime = (60 - time) / 60;
+        const wpm = numberwords / elapsedTime
+        return wpm
+    } else {
+        const wpm = numberwords
+        return wpm
+    };
 }
 
 function reset() {
-    
+    clearInterval(timer);
+    timer = null;
+    time = 60;
+
+    const stopEl = document.querySelector(".stopTest")
+    stopEl.classList.add("hide")
+
+    const inputEl = document.querySelector("#textInput")
+    inputEl.disabled = false
+    inputEl.value = ""
+
+    const timerEl = document.querySelector(".timer")
+    timerEl.innerHTML = "60 sec"
+
+    const spans = document.querySelectorAll(".text")
+    spans.forEach((span) => {
+        span.classList.remove("correct", "incorrect")
+    });
+
+    randomNum = getRandomnumber();
+    const textEl = document.querySelector(".typingText");
+    textEl.innerHTML = typingText[randomNum].text.split("").map(splitText).join("")
 }
 
-function setLocalStorage() {
-
+function setLocalStorage(wpm) {
+    localStorage.setItem("wpm", wpm);
 }
 
 function getLocalStorage() {
@@ -107,5 +153,5 @@ const textInputEl = document.querySelector("#textInput")
 textInputEl.addEventListener("input", getTypingInput)
 textInputEl.addEventListener("input", startTimer)
 
-// const button = document.querySelector(".restart")
-// button.addEventListener("click", startTimer)
+const button = document.querySelector(".restart")
+button.addEventListener("click", reset)
