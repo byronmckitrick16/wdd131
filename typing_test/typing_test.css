@@ -72,7 +72,6 @@ nav a:hover {
 
 .textInput {
     width: 80%;
-    padding: 10px;
 }
 
 #textInput {
@@ -80,6 +79,7 @@ nav a:hover {
     height: 150px;
     background-color: var(--accent3-color);
     font-size: 1.5rem;
+    padding: 10px;
 }
 
 .stopTest {
@@ -209,6 +209,6 @@ table tfoot td {
     }
 
     .averageWpm {
-        width: 50%;
+        width: 60%;
     }
 }
