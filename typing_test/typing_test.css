@@ -124,17 +124,21 @@ footer {
 }
 
 /* 2nd page styles */
-.personalBest {
+.page2 {
+    font-family: var(--heading-font);
+}
+
+.personalBestDiv {
     margin: 0 auto;
     margin-top: 10px;
     display: flex;
     justify-content: center;
     border: 5px solid var(--primary-color);
-    width: 300px;
+    width: 325px;
     background-color: var(--accent1-color);
 }
 
-.personalBest h2, .averageWpm h2 {
+.personalBestDiv h2, .averageWpm h2 {
     margin: 10px;
     margin-right: 0;
 }
@@ -146,7 +150,6 @@ footer {
 }
 
 .averageWpm {
-    /* display: flex; */
     border: 5px solid var(--primary-color);
     background-color: var(--accent1-color);
     padding-right: 10px;
@@ -156,38 +159,56 @@ footer {
 
 .tableDiv {
     width: 60%;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
 }
 
 table {
   background-color: #EFF6E0;
-  width: 100%;
+  width: 70%;
   text-align: left;
+  border: 5px solid var(--primary-color)
 }
+
 table td, table th {
   padding: 3px 2px;
 }
+
 table tbody td {
-  font-size: 13px;
+  font-size: 20px;
 }
+
 table thead {
   background: #698392;
   border-bottom: 2px solid #01161E;
 }
+
 table thead th {
-  font-size: 15px;
+  font-size: 25px;
   font-weight: bold;
   text-align: center;
 }
+
 table tfoot td {
-  font-size: 14px;
+  font-size: 20px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     header {
         justify-content: center;
     }
 
     .logo {
         display: none;
+    }
+
+    .contentPage2 {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .averageWpm {
+        width: 50%;
     }
 }

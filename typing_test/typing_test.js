@@ -53,7 +53,7 @@ function compareTypingInput(inputList) {
     spans.forEach((span, index) => {
         const typedCharacter = inputList[index]
 
-        if (typedCharacter == undefined) {
+        if (!typedCharacter) {
             span.classList.remove("correct", "incorrect")
         } else if (typedCharacter == span.textContent) {
             span.classList.add("correct")
@@ -74,7 +74,7 @@ function startTimer() {
 }
 
 function returnTime() {
-    if (time > 50) {
+    if (time > 0) {
         time = time - 1
         const timerEl = document.querySelector(".timer")
         timerEl.innerHTML = `${time} sec`
@@ -97,7 +97,7 @@ function stopTest() {
     const inputEl = document.querySelector("#textInput")
     inputEl.disabled = true
 
-    setLocalStorage(wpm);
+    setPerviousWpm(wpm);
 }
 
 function calculateWpm() {
@@ -139,12 +139,23 @@ function reset() {
     textEl.innerHTML = typingText[randomNum].text.split("").map(splitText).join("")
 }
 
-function setLocalStorage(wpm) {
-    localStorage.setItem("wpm", wpm);
-}
+function setPerviousWpm(wpm) {
+    let timesSet = localStorage.getItem("timesSet")
+    if (!timesSet) {
+        timesSet = 1;
+    } else {
+        timesSet = Number(timesSet)
+        timesSet += 1
+    }
+    localStorage.setItem(`wpm${timesSet}`, wpm);
+    localStorage.setItem("timesSet", timesSet);
 
-function getLocalStorage() {
-
+    const date = new Date();
+    let monthDate = date.getMonth();
+    monthDate += 1
+    const dayDate = date.getDate();
+    const fullDate = `${monthDate}/${dayDate}`
+    localStorage.setItem(`date${timesSet}`, fullDate)
 }
 
 displayText();
