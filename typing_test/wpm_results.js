@@ -1,4 +1,5 @@
 function getPreviousWpm() {
+    // grap previous wpm and date from local storage to put into a table
     const tableEl = document.querySelector(".tableBody")
     let timesSet = localStorage.getItem("timesSet")
     let i = 0
@@ -21,6 +22,7 @@ function tableHtml(wpm, date) {
 }
 
 function computeBestWpm(wpm, bestWpm) {
+    // find the best wpm
     if (wpm > bestWpm) {
         return wpm
     } else {

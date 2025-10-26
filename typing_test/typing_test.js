@@ -1,26 +1,8 @@
-// quick reminders for myself later
-// localStorage.setItem("nameforkey", variable)
-// localStorage.getItem("nameofkey")
-// localStorage.setItem("name", JSON.stringify(object));
-// JSON.parse(localStorage.getItem(stringToTurnToObject));
-
 const typingText = [
-    {
-        id: 1,
-        text: "Technology changes faster than most people expect, shaping how we work, learn, and connect with one another across the world, yet the real challenge remains not in building smarter machines, but in learning how to stay human, creative, and kind while adapting to an ever-evolving digital landscape."
-    },
-    {
-        id: 2,
-        text: "Every great adventure begins with a small, uncertain step forward, a spark of courage that pushes someone to leave comfort behind and face the unknown, discovering along the way that the greatest rewards are rarely found at the destination but in the growth and wisdom gained during the journey."
-    },
-    {
-        id: 3,
-        text: "Writers often struggle to capture the exact rhythm of thought that dances between inspiration and hesitation, yet the magic lies in persistence, in rewriting until every word feels true, transforming vague ideas into vivid images that linger long after the final sentence has been read and remembered."
-    },
-    {
-        id: 4,
-        text: "The curious cat leapt gracefully onto the windowsill, watching raindrops slide down the glass in tiny streams, fascinated by their unpredictable paths, while the quiet hum of the refrigerator filled the kitchen and the faint scent of coffee lingered from a cup left half-finished on the counter nearby."
-    }
+    "Technology changes faster than most people expect, shaping how we work, learn, and connect with one another across the world, yet the real challenge remains not in building smarter machines, but in learning how to stay human, creative, and kind while adapting to an ever-evolving digital landscape.",
+    "Every great adventure begins with a small, uncertain step forward, a spark of courage that pushes someone to leave comfort behind and face the unknown, discovering along the way that the greatest rewards are rarely found at the destination but in the growth and wisdom gained during the journey.",
+    "Writers often struggle to capture the exact rhythm of thought that dances between inspiration and hesitation, yet the magic lies in persistence, in rewriting until every word feels true, transforming vague ideas into vivid images that linger long after the final sentence has been read and remembered.",
+    "The curious cat leapt gracefully onto the windowsill, watching raindrops slide down the glass in tiny streams, fascinated by their unpredictable paths, while the quiet hum of the refrigerator filled the kitchen and the faint scent of coffee lingered from a cup left half-finished on the counter nearby."
 ]
 
 let timer = null;
@@ -28,14 +10,16 @@ let time = 60;
 let randomNum;
 
 function getRandomnumber() {
+    // get a random number for the number of strings in the list above
     return Math.floor(Math.random() * typingText.length)
 }
 
 function displayText() {
+    // take the randomly chosen string a display for the user
     randomNum = getRandomnumber();
     const textEl = document.querySelector(".typingText");
 
-    textEl.innerHTML = typingText[randomNum].text.split("").map(splitText).join("")
+    textEl.innerHTML = typingText[randomNum].split("").map(splitText).join("")
 }
 
 function splitText(text) {
@@ -43,12 +27,14 @@ function splitText(text) {
 }
 
 function getTypingInput() {
+    // get the input from the user
     const textInput = document.querySelector("#textInput")
     const textInputList = textInput.value.split("")
     compareTypingInput(textInputList)
 }
 
 function compareTypingInput(inputList) {
+    // loop to compare what the user inputs to the text given to them
     const spans = document.querySelectorAll(".text")
     spans.forEach((span, index) => {
         const typedCharacter = inputList[index]
@@ -74,6 +60,7 @@ function startTimer() {
 }
 
 function returnTime() {
+    // return the amount of time that they have left starting at 60 sec
     if (time > 0) {
         time = time - 1
         const timerEl = document.querySelector(".timer")
@@ -86,6 +73,7 @@ function returnTime() {
 }
 
 function stopTest() {
+    // stop the timer from going and stop the user from being able to type anything into the input box
     clearInterval(timer);
 
     const wpm = calculateWpm();
@@ -101,20 +89,37 @@ function stopTest() {
 }
 
 function calculateWpm() {
-    const wordsTyped = textInput.value.split(" ")
-    const numberwords = wordsTyped.length
+    // take the number of characters typed minus the erros and get the number of words typed in the time it took them
+    const wordsTyped = textInput.value.split("")
+    const numberChar = wordsTyped.length
+    const errorNum = calcualteErrors()
+    const numberWords = (numberChar - errorNum) / 5
 
     if (time != 0) {
         const elapsedTime = (60 - time) / 60;
-        const wpm = numberwords / elapsedTime
+        const wpm = numberWords / elapsedTime
         return wpm
     } else {
-        const wpm = numberwords
+        const wpm = numberWords
         return wpm
     };
 }
 
+function calcualteErrors() {
+    // find the number of errors that the user made while typing
+    const spans = document.querySelectorAll(".text")
+    let errorNum = 0
+
+    spans.forEach((span) => {
+        if (span.classList.contains("incorrect")) {
+            errorNum += 1
+        }
+    })
+    return errorNum
+}
+
 function reset() {
+    // reset everything so the user can take the test again
     clearInterval(timer);
     timer = null;
     time = 60;
@@ -140,6 +145,7 @@ function reset() {
 }
 
 function setPerviousWpm(wpm) {
+    // put the wpm and date into local storage
     let timesSet = localStorage.getItem("timesSet")
     if (!timesSet) {
         timesSet = 1;
