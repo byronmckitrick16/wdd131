@@ -75,7 +75,7 @@ nav a:hover {
 }
 
 #textInput {
-    width: 100%;
+    width: 98%;
     height: 150px;
     background-color: var(--accent3-color);
     font-size: 1.5rem;
