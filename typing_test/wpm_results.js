@@ -6,7 +6,8 @@ function getPreviousWpm() {
     let bestWpm = 0;
     while (i < timesSet) {
         i += 1
-        const wpm = localStorage.getItem(`wpm${i}`);
+        let wpm = localStorage.getItem(`wpm${i}`);
+        wpm = Number(wpm)
         const date = localStorage.getItem(`date${i}`);
         const html = tableHtml(wpm, date);
         tableEl.innerHTML += html
@@ -14,7 +15,7 @@ function getPreviousWpm() {
         bestWpm = computeBestWpm(wpm, bestWpm)
     }
     const personalBestEl = document.querySelector(".personalBest")
-    personalBestEl.textContent = `${bestWpm} Wpm`
+    personalBestEl.textContent = `${Math.round(bestWpm)} Wpm`
 }
 
 function tableHtml(wpm, date) {

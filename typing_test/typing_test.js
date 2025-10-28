@@ -156,7 +156,6 @@ function setPerviousWpm(wpm) {
         timesSet = Number(timesSet)
         timesSet += 1
     }
-    wpm = round(wpm)
     localStorage.setItem(`wpm${timesSet}`, wpm);
     localStorage.setItem("timesSet", timesSet);
 
