@@ -18,7 +18,7 @@ function getPreviousWpm() {
 }
 
 function tableHtml(wpm, date) {
-    return `<tr> <td>${date}</td> <td>${wpm} Wpm</td> </tr>`
+    return `<tr> <td>${date}</td> <td>${Math.round(wpm)} Wpm</td> </tr>`
 }
 
 function computeBestWpm(wpm, bestWpm) {
