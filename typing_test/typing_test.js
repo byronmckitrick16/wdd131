@@ -52,11 +52,10 @@ function compareTypingInput(inputList) {
             span.classList.add("incorrect")
             span.classList.remove("correct")
         }
-
-        if (inputList.length >= spans.length) {
-            stopTest();
-        }
     });
+    if (inputList.length >= spans.length) {
+        stopTest();
+    }
 }
 
 function startTimer() {
@@ -157,6 +156,7 @@ function setPerviousWpm(wpm) {
         timesSet = Number(timesSet)
         timesSet += 1
     }
+    wpm = round(wpm)
     localStorage.setItem(`wpm${timesSet}`, wpm);
     localStorage.setItem("timesSet", timesSet);
 
